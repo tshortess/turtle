@@ -1,17 +1,23 @@
+package com.topbloc;
+
 import static spark.Spark.*;
 
 public class Main {
 
     public static void main(String[] args) {
+        Main main = new Main();
+        main.setup();
+    }
 
+    private void setup() {
         //This is required to allow GET and POST requests with the header 'content-type'
         options("/*",
                 (request, response) -> {
-                        response.header("Access-Control-Allow-Headers",
-                                "content-type");
+                    response.header("Access-Control-Allow-Headers",
+                            "content-type");
 
-                        response.header("Access-Control-Allow-Methods",
-                                "GET, POST");
+                    response.header("Access-Control-Allow-Methods",
+                            "GET, POST");
 
 
                     return "OK";
@@ -29,6 +35,5 @@ public class Main {
         post("/restock-cost", (request, response) -> {
             return null;
         });
-
     }
 }
