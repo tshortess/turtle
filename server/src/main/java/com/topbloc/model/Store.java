@@ -4,6 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Store {
 
@@ -14,9 +15,9 @@ public class Store {
     public Store(){
     }
 
-    public Store(String name, HashMap<Candy, Inventory> hashMapOfInventory) {
+    public Store(String name, HashMap<Candy, Inventory> storeCandyInventory) {
         this.name = name;
-        this.storeCandyInventory = hashMapOfInventory;
+        this.storeCandyInventory = storeCandyInventory;
     }
 
     public String getName() {
@@ -54,5 +55,19 @@ public class Store {
             returnJsonObject.put("inventory", candyInventoryArray);
         }
         return returnJsonObject;
+    }
+
+    public Inventory getStoreInventoryByCandy(Candy candy) {
+        Inventory candyInventory = new Inventory();
+
+        for (Map.Entry<Candy, Inventory> entry : storeCandyInventory.entrySet()) {
+            if (entry.getKey().getName().equals(candy.getName())) {
+                candyInventory.setInStockAmount(entry.getValue().getInStockAmount());
+                candyInventory.setMaxCapacity(entry.getValue().getMaxCapacity());
+                break;
+            }
+        }
+
+        return candyInventory;
     }
 }
