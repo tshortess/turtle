@@ -1,7 +1,6 @@
 package com.topbloc.controller;
 
 import com.topbloc.dao.PoiStockDao;
-import com.topbloc.model.Store;
 import org.json.JSONObject;
 
 import java.math.BigDecimal;
@@ -14,8 +13,8 @@ public class StockController {
         this.poiStockDao = poiStockDao;
     }
 
-    public JSONObject getLowStockCandy(String store) {
-        return poiStockDao.getLowStockCandy(store);
+    public JSONObject getLowStockCandy(String store, Double percentThreshold) {
+        return poiStockDao.getLowStockCandy(store,percentThreshold);
     }
 
     public BigDecimal getReorderCost(String orderQuantities) {
