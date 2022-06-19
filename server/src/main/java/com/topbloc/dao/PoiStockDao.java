@@ -33,9 +33,7 @@ public class PoiStockDao {
         for (int i = 0; i < jsonOrderQuantities.length(); i++) {
             try {
                 candy.setName(jsonOrderQuantities.getJSONObject(i).getString("candyName"));
-                System.out.println(candy.getName());
                 candy.setSku(jsonOrderQuantities.getJSONObject(i).getInt("sku"));
-                System.out.println(candy.getSku());
                 Double orderQuantity = jsonOrderQuantities.getJSONObject(i).getDouble("orderQuantity");
 
                 if (orderQuantity < 0) {
@@ -115,7 +113,6 @@ public class PoiStockDao {
 
             while (distributorsSheetIterator.hasNext()) {
                 XSSFSheet distributorSheet = (XSSFSheet) distributorsSheetIterator.next();
-                System.out.println(distributorSheet.getSheetName());
                 Iterator<Row> rowIterator = distributorSheet.rowIterator();
 
                 while (rowIterator.hasNext()) {
