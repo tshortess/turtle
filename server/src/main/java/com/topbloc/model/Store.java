@@ -37,7 +37,7 @@ public class Store {
 
     public JSONObject toJsonObject() {
         JSONObject returnJsonObject = new JSONObject();
-        returnJsonObject.put("name", getName());
+        returnJsonObject.put("storeName", getName());
 
         if (getStoreCandyInventory() != null) {
             JSONArray candyInventoryArray = new JSONArray();
