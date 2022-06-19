@@ -37,15 +37,15 @@ public class Main {
                 return stockController.getLowStockCandy(request.queryParams("name"), PERCENT_THRESHOLD);
             } catch(Exception e) {
                 e.printStackTrace();
-                return e.getMessage() + " " + e.getStackTrace() + " " + e.getLocalizedMessage();
+                return "Oops...an error occurred. Please reference error message: " + e.getMessage();
             }
         });
 
         post("/restock-cost", (request, response) -> {
             try {
-            return stockController.getReorderCost(request.body());
+                return stockController.getReorderCost(request.body(), PERCENT_THRESHOLD);
             } catch (Exception e) {
-                return "Oops...something went wrong!";
+                return "Oops...an error occurred. Please reference error message: " + e.getMessage();
             }
         });
     }
