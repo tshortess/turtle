@@ -2,31 +2,31 @@ package com.topbloc.model;
 
 public class Inventory {
 
-    private int inStockAmount;
+    private Double inStockAmount;
 
-    private int maxCapacity;
+    private Double maxCapacity;
 
     public Inventory() {
     }
 
-    public Inventory(int inStockAmount, int maxCapacity) {
+    public Inventory(Double inStockAmount, Double maxCapacity) {
         this.inStockAmount = inStockAmount;
         this.maxCapacity = maxCapacity;
     }
 
-    public int getInStockAmount() {
+    public Double getInStockAmount() {
         return inStockAmount;
     }
 
-    public void setInStockAmount(int inStockAmount) {
+    public void setInStockAmount(Double inStockAmount) {
         this.inStockAmount = inStockAmount;
     }
 
-    public int getMaxCapacity() {
+    public Double getMaxCapacity() {
         return maxCapacity;
     }
 
-    public void setMaxCapacity(int maxCapacity) {
+    public void setMaxCapacity(Double maxCapacity) {
         this.maxCapacity = maxCapacity;
     }
 }
