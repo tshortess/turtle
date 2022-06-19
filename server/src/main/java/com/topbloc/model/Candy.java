@@ -6,15 +6,12 @@ public class Candy {
 
     private int sku;
 
-    private int capacity;
-
     public Candy() {
     }
 
-    public Candy(String name, int id, int maxCapacity) {
+    public Candy(String name, int id) {
         this.name = name;
         this.sku = id;
-        this.capacity = maxCapacity;
     }
 
     public String getName() {
@@ -33,11 +30,4 @@ public class Candy {
         this.sku = sku;
     }
 
-    public int getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
 }
