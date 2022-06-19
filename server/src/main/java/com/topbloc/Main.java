@@ -7,6 +7,7 @@ import static spark.Spark.*;
 
 public class Main {
 
+    private static final Double PERCENT_THRESHOLD = 25.0;
     public static void main(String[] args) {
         Main main = new Main();
         main.setup();
@@ -33,9 +34,10 @@ public class Main {
 
         get("/low-stock", (request, response) -> {
             try {
-                return stockController.getLowStockCandy(request.body());
+                return stockController.getLowStockCandy(request.queryParams("name"), PERCENT_THRESHOLD);
             } catch(Exception e) {
-                return "Oops...something went wrong!";
+                e.printStackTrace();
+                return e.getMessage() + " " + e.getStackTrace() + " " + e.getLocalizedMessage();
             }
         });
 
