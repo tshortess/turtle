@@ -29,4 +29,5 @@ public class Inventory {
     public void setMaxCapacity(Double maxCapacity) {
         this.maxCapacity = maxCapacity;
     }
+
 }
