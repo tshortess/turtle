@@ -1,5 +1,8 @@
 package com.topbloc;
 
+import com.topbloc.controller.StockController;
+import com.topbloc.dao.PoiStockDao;
+
 import static spark.Spark.*;
 
 public class Main {
@@ -10,6 +13,8 @@ public class Main {
     }
 
     private void setup() {
+        PoiStockDao poiStockDao = new PoiStockDao();
+        StockController stockController = new StockController(poiStockDao);
         //This is required to allow GET and POST requests with the header 'content-type'
         options("/*",
                 (request, response) -> {
@@ -26,14 +31,20 @@ public class Main {
         //This is required to allow the React app to communicate with this API
         before((request, response) -> response.header("Access-Control-Allow-Origin", "http://localhost:3000"));
 
-        //TODO: Return JSON containing the candies for which the stock is less than 25% of it's capacity
         get("/low-stock", (request, response) -> {
-            return null;
+            try {
+                return stockController.getLowStockCandy(request.body());
+            } catch(Exception e) {
+                return "Oops...something went wrong!";
+            }
         });
 
-        //TODO: Return JSON containing the total cost of restocking candy
         post("/restock-cost", (request, response) -> {
-            return null;
+            try {
+            return stockController.getReorderCost(request.body());
+            } catch (Exception e) {
+                return "Oops...something went wrong!";
+            }
         });
     }
 }
