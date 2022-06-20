@@ -22,6 +22,9 @@ public class Main {
                     response.header("Access-Control-Allow-Headers",
                             "content-type");
 
+                    response.header("Access-Control-Allow-Headers",
+                            "storeName");
+
                     response.header("Access-Control-Allow-Methods",
                             "GET, POST");
 
@@ -34,7 +37,7 @@ public class Main {
 
         get("/low-stock", (request, response) -> {
             try {
-                return stockController.getLowStockCandy(request.queryParams("name"), PERCENT_THRESHOLD);
+                return stockController.getLowStockCandy(request.headers("storeName"), PERCENT_THRESHOLD);
             } catch(Exception e) {
                 e.printStackTrace();
                 return "Oops...an error occurred. Please reference error message: " + e.getMessage();
