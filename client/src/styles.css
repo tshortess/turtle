@@ -56,7 +56,7 @@ p {
   line-height: 2rem;
 }
 
-td {
+td, input {
   padding: 1rem;
   border: 1px solid #f3f3f3;
 }
@@ -70,4 +70,38 @@ thead {
 
 tr:nth-child(even) {
   background-color: #e6e6e6;
+}
+
+.bannerHeaderClass {
+  text-align: center;
+  color: #02a3e8;
+}
+
+input {
+  width: auto;
+  border: none;
+  padding: 0;
+  text-align: center;
+}
+
+.tableRowInputClass {
+  align-self: center;
+}
+
+.lowStockThresholdClass, .getReorderCostClass {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+button {
+  width: 30%;
+  height: auto;
+  border: 1px solid #f3f3f3;
+  background-color: #02a3e8;
+}
+
+#lowStockThresholdInput {
+  width: 5%;
+  text-align: right;
 }
