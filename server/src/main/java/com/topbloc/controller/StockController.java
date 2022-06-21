@@ -12,12 +12,12 @@ public class StockController {
         this.poiStockDao = poiStockDao;
     }
 
-    public JSONObject getLowStockCandy(String store, Double percentThreshold) {
-        return poiStockDao.getLowStockCandy(store,percentThreshold);
+    public JSONObject getCandyStock(String store, Double percentThreshold) {
+        return poiStockDao.getCandyStock(store,percentThreshold);
     }
 
-    public JSONObject getReorderCost(String orderQuantities, Double percentThreshold) {
-        return poiStockDao.getReorderCost(orderQuantities, percentThreshold);
+    public JSONObject getReorderCost(String orderQuantities) {
+        return poiStockDao.getReorderCost(orderQuantities);
     }
 
 }
