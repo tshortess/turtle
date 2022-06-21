@@ -8,7 +8,7 @@ import static spark.Spark.*;
 public class Main {
 
     private static final Double FULL_STOCK = 100.0;
-    
+
     public static void main(String[] args) {
         Main main = new Main();
         main.setup();
