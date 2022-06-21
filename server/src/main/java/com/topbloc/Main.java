@@ -7,7 +7,8 @@ import static spark.Spark.*;
 
 public class Main {
 
-    private static final Double PERCENT_THRESHOLD = 25.0;
+    private static final Double FULL_STOCK = 100.0;
+    
     public static void main(String[] args) {
         Main main = new Main();
         main.setup();
@@ -25,6 +26,9 @@ public class Main {
                     response.header("Access-Control-Allow-Headers",
                             "storeName");
 
+                    response.header("Access-Control-Allow-Headers",
+                            "lowStockThreshold");
+
                     response.header("Access-Control-Allow-Methods",
                             "GET, POST");
 
@@ -36,16 +40,23 @@ public class Main {
 
         get("/low-stock", (request, response) -> {
             try {
-                return stockController.getLowStockCandy(request.headers("storeName"), PERCENT_THRESHOLD);
+                return stockController.getCandyStock(request.headers("storeName"), Double.parseDouble(request.headers("lowStockThreshold")));
             } catch(Exception e) {
-                e.printStackTrace();
+                return "Oops...an error occurred. Please reference error message: " + e.getMessage();
+            }
+        });
+
+        get("/full-stock", (request, response) -> {
+            try {
+                return stockController.getCandyStock(request.headers("storeName"), FULL_STOCK);
+            } catch(Exception e) {
                 return "Oops...an error occurred. Please reference error message: " + e.getMessage();
             }
         });
 
         post("/restock-cost", (request, response) -> {
             try {
-                return stockController.getReorderCost(request.body(), PERCENT_THRESHOLD);
+                return stockController.getReorderCost(request.body());
             } catch (Exception e) {
                 return "Oops...an error occurred. Please reference error message: " + e.getMessage();
             }
