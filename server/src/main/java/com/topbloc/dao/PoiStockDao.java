@@ -17,15 +17,17 @@ import java.util.*;
 
 public class PoiStockDao {
 
-    public JSONObject getLowStockCandy(String request, Double percentThreshold) {
+    private static final Double FULL_STOCK = 100.0;
+
+    public JSONObject getCandyStock(String request, Double percentThreshold) {
         Store store = mapRequestToStore(request, percentThreshold);
         return store.toJsonObject();
     }
 
-    public JSONObject getReorderCost(String orderQuantities, Double percentThreshold) {
+    public JSONObject getReorderCost(String orderQuantities) {
         JSONObject jsonOrderRequest = new JSONObject(orderQuantities);
         String jsonStoreName = jsonOrderRequest.getString("storeName");
-        Store store = mapRequestToStore(jsonStoreName, percentThreshold);
+        Store store = mapRequestToStore(jsonStoreName, FULL_STOCK);
         JSONArray jsonOrderQuantities = jsonOrderRequest.getJSONArray("orderQuantities");
         BigDecimal bigDecimalTotalPrice = BigDecimal.ZERO;
         Candy candy = new Candy();
